@@ -1,37 +1,14 @@
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3307/second_database
-    username: my_user
-    password: my_password
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-  rabbitmq:
-    host: localhost
-    port: 5675
-    username: guest
-    password: guest
-    virtual-host: /
-    ssl:
-      enabled: false
-    eager-initializer: true
-  cloud:
-    stream:
-      bindings:
-        createstudent-out-0:
-          destination: mona.my-first-exchange
-          contentType: application/json
-          binder: rabbit
-      rabbit:
-        bindings:
-          createstudent-out-0:
-            producer:
-              required-groups:
-                - my-consumer-group
-              declareExchange: true
-              routing-key-expression: "'mona.student.key'"
-              exchangeType: direct
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mylibrary
+
+com:
+  lisa:
+    db:
+      host: localhost
+      port: 27017
+      database: mylibrary
 
 
 management:

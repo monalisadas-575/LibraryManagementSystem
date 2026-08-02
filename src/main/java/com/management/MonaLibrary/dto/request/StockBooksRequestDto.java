@@ -1,16 +1,19 @@
 package com.management.MonaLibrary.dto.request;
 
-import com.management.MonaLibrary.myEnum.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookRequestDto {
+public class StockBooksRequestDto extends LibraryStockRequestDTO {
+    private String type= "BOOK";
     private String title;
     private String author;
     private int price;
-    private Status bookStatus;
+    private Date date;
+    private String description;
 }
