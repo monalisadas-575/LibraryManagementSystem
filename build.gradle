@@ -1,0 +1,55 @@
+plugins {
+	id 'java-library'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.management'
+version = '0.0.1-SNAPSHOT'
+description = 'Library Management system project withSpring Boot with JPA & RabbitMq'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+ext {
+	// 2024.0.0 is the compatible Spring Cloud release train for Spring Boot 3.4.x
+	set('springCloudVersion', "2024.0.0")
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'com.mysql:mysql-connector-j'
+	implementation("org.springframework.cloud:spring-cloud-function-context")
+	//implementation("org.springframework.cloud:spring-cloud-stream:4.0.3")
+	implementation("org.springframework.cloud:spring-cloud-stream-binder-rabbit")
+	implementation 'org.apache.commons:commons-lang3:3.20.0'
+	implementation 'org.apache.commons:commons-text:1.15.0'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
