@@ -20,4 +20,5 @@ public class BookTrackingModel {
     public String ISBN;
     public String memberId;
     public LocalDateTime issuedAt;
+    public LocalDateTime returnedAt;
 }

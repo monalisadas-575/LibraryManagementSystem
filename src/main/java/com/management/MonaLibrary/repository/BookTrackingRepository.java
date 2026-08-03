@@ -12,4 +12,7 @@ import java.util.List;
 public interface BookTrackingRepository extends MongoRepository<BookTrackingModel, String> {
     List<BookTrackingModel> findAllByISBNIn(List<String> isbns);
 
+    @Query("{ 'returnedAt': null, 'ISBN': { $in: ?0 } }")
+    List<BookTrackingModel> findBooksTrackingRecordWhichAreNotReturnedYetWithGivenIsbns(List<String> isbns);
+
 }

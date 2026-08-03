@@ -4,5 +4,5 @@ import com.management.MonaLibrary.dto.enums.MemberType;
 
 import java.util.List;
 
-public record MemberDetail(String id, String name, MemberType type, List<String> ISBNs) {
+public record MemberDetail(String personId, String bookname, MemberType type, List<String> ISBNs) {
 }

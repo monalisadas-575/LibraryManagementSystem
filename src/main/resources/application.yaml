@@ -2,6 +2,38 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/mylibrary
+  rabbitmq:
+    host: localhost
+    port: 5675
+    username: guest
+    password: guest
+    virtual-host: /
+    ssl:
+      enabled: false
+    eager-initializer: true
+
+  cloud:
+    stream:
+      bindings:
+        bookissue-out-0:
+          destination: education.management
+          contentType: application/json
+          binder: rabbit
+        bookreturn-out-0:
+          destination: education.management
+          contentType: application/json
+          binder: rabbit
+      rabbit:
+        bindings:
+          bookissue-out-0:
+            producer:
+              declareExchange: true
+              routing-key-expression: "'library.book.issue'"
+          bookreturn-out-0:
+            producer:
+              declareExchange: true
+              routing-key-expression: "'library.book.return'"
+
 
 com:
   lisa:
