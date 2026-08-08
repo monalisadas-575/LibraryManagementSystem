@@ -1,7 +1,8 @@
 package com.management.MonaLibrary.controller;
 
+import com.management.MonaLibrary.dto.request.BookIssueRequestDTO;
 import com.management.MonaLibrary.dto.enums.BookCategory;
-import com.management.MonaLibrary.dto.request.MemberDetail;
+import com.management.MonaLibrary.dto.request.BookReturnRequestDTO;
 import com.management.MonaLibrary.dto.request.StockBooksRequestDto;
 import com.management.MonaLibrary.service.StockService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,7 +24,7 @@ public class BookController {
 
     @Operation(summary = "Controller to add new Stocks of books",
             description = "Controller to add new Stocks of books")
-    @PostMapping("/stock/{name}/{category}")
+    @PostMapping("/stock/{category}")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201",description = "Success"),
@@ -63,9 +64,9 @@ public class BookController {
     public void issueBook(@RequestParam(name="count") Integer count,
             @PathVariable(name = "category") BookCategory category,
             @PathVariable(name= "name") String name,
-          @RequestBody MemberDetail memberDetail){
+          @RequestBody BookIssueRequestDTO bookIssueRequestDTO){
 
-        stockService.borrowBooks(category,name,count,memberDetail);
+        stockService.issueBooks(category,name,count,bookIssueRequestDTO);
     }
 
     @Operation(summary = "Controller to know available Number Stocks of books",
@@ -91,9 +92,9 @@ public class BookController {
             @ApiResponse(responseCode = "201",description = "Success"),
             @ApiResponse(responseCode = "400",description = "Not Found"),
             @ApiResponse(responseCode = "500",description = "Internal Server Error") })
-    public void returnBook( @RequestBody MemberDetail memberDetail){
+    public void returnBook( @RequestBody BookReturnRequestDTO bookReturnRequestDTO){
 
-        stockService.returnBooks(memberDetail);
+        stockService.returnBooks(bookReturnRequestDTO);
     }
 
 

@@ -22,7 +22,7 @@ public class BookIssueProducerImpl extends MyProducer<BookTransportDTO> {
     public boolean  send(List<BookTransportDTO> bookTransportDTOs){
         bookTransportDTOs.forEach( bookTransportDTO -> {
             super.send(bindingname,bookTransportDTO);
-            LOGGER.info("sending book Return event for book with Id {}",bookTransportDTO.getISBN());
+            LOGGER.info("sending book Issue event for book with Id {}",bookTransportDTO.getISBN());
         });
         return true;
     }

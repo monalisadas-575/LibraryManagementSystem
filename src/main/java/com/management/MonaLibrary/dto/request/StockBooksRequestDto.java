@@ -10,7 +10,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StockBooksRequestDto extends LibraryStockRequestDTO {
-    private String type= "BOOK";
     private String title;
     private String author;
     private int price;
