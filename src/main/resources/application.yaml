@@ -1,12 +1,7 @@
 spring:
-#  security:
-#    user:
-#      name: admin
-#      password: admin
-
   data:
     mongodb:
-      uri: mongodb://localhost:27017/mylibrary
+      uri: mongodb+srv://monalisadas575_db_user:A1jtZiwa7f38BpsG@myfreecluster0.vvzlhdp.mongodb.net/mySpringBootPractise
   rabbitmq:
     host: localhost
     port: 5675
@@ -40,12 +35,13 @@ spring:
               routing-key-expression: "'library.book.return'"
 
 
-com:
-  lisa:
-    db:
-      host: localhost
-      port: 27017
-      database: mylibrary
+#com:
+#  lisa:
+#    db:
+#      host: localhost
+#      port: 27017
+#      database: mylibrary
+#      uri: mongodb+srv://monalisadas575_db_user:A1jtZiwa7f38BpsG@myfreecluster0.vvzlhdp.mongodb.net
 
 
 management:

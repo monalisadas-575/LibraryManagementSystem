@@ -12,19 +12,19 @@ import org.springframework.data.mongodb.core.MongoTemplate;
  *  This is the bean creation class for Mongotemplate. that i will use later
  */
 @Configuration
-@DependsOn("customMongoProperties") //it will make sure that CustomMongoProperties Bean is prepared before the MyMongoConfiguration
+//@DependsOn("customMongoProperties") //it will make sure that CustomMongoProperties Bean is prepared before the MyMongoConfiguration
 public class MyMongoConfiguration {
 
-    @Autowired
-    private CustomMongoProperties customMongoProperties;
+//    @Autowired
+//    private CustomMongoProperties customMongoProperties;
 
-    @Bean(name = "mongoClient")
-    public MongoClient myMongoClient(){
-        return MongoClients.create();
-    }
-
-    @Bean(name = "mongoTemplate")
-    public MongoTemplate myMongoTemplate(){
-        return new MongoTemplate(myMongoClient(),customMongoProperties.getDatabase());
-    }
+//    @Bean(name = "mongoClient")
+//    public MongoClient myMongoClient(){
+//        return MongoClients.create();
+//    }
+//
+//    @Bean(name = "mongoTemplate")
+//    public MongoTemplate myMongoTemplate(){
+//        return new MongoTemplate(myMongoClient(),customMongoProperties.getDatabase());
+//    }
 }

@@ -80,9 +80,7 @@ public class StockService {
 
     /**
      * @param category
-     * @param name
      * @param count
-     * @param memberDetail
      * Here @transactional  is used so that this method sticks to follow the ACID property, either all will happemm or NONE. No in between
      * @return
      */
@@ -136,7 +134,6 @@ public class StockService {
     /**
      * @param bookReturnRequestDTO
      * Here @transactional  is used so that this method sticks to follow the ACID property, either all will happemm or NONE. No in between
-     * @return
      */
     @Transactional
     public void returnBooks(BookReturnRequestDTO bookReturnRequestDTO){
